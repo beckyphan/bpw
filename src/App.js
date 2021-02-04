@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Route, Switch } from "react-router-dom";
 import './App.css';
+import NavBar from './components/NavBar';
+import HomePage from './components/HomePage';
+import StartSession from './components/StartSession';
+import WallStBets from './components/WallStBets';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path='/expected-date' component={WallStBets} />
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/signin' component={StartSession} />
+        </Switch>
+      </div>
+    )
+  }
 }
 
 export default App;
